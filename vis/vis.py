@@ -30,7 +30,7 @@ def plot_area_results(path):
     """
     data = pd.read_csv(path)
 
-    data = data.set_index(['distance_km','confidence_level_%']).unstack().swaplevel(0,1,1).sort_index(1)
+    data = data.set_index(['distance_km','confidence_level_%']).unstack().swaplevel(0,1,1).sort_index(axis=1)
     ax =  data.plot.line()
     ax.set_xlabel("Distance (km)")
     ax.set_ylabel("Propagation Loss (dB)")
@@ -58,7 +58,7 @@ def plot_p2p_results(path):
 
     data = data.set_index(
         ['reliability_level_%', 'confidence_level_%']
-        ).unstack().swaplevel(0,1,1).sort_index(1)
+        ).unstack().swaplevel(0,1,1).sort_index(axis=1)
 
     ax =  data.plot.bar(rot=0)
     ax.set_xlabel("Reliability (%)")
